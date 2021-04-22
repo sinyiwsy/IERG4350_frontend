@@ -1,0 +1,8 @@
+#foo > ul, button{
+    display: none;
+}
+
+#foo:hover > ul, button{
+    display: block;
+}
+
