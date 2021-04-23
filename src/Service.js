@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const URI = "https://secure.s70.ierg4210.ie.cuhk.edu.hk/backend/index.php";
+// const URI = "https://secure.s70.ierg4210.ie.cuhk.edu.hk/backend/index.php";
+const URI = "http://localhost:8080/backend/index.php";
 
 export const getCategoryListService = () => {
     return axios.get(URI + "?action=category");
