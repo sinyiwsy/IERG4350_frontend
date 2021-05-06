@@ -71,7 +71,7 @@ const ShoppingCart = (props) => {
       <p>Shopping List Total: ${totalCost}</p>
 
       {shoppingCartElements}
-      <button onClick={onFinish}>Checkout</button>
+      {/* <button onClick={onFinish}>Checkout</button> */}
     </div>
   );
 };
