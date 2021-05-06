@@ -1,14 +1,11 @@
-import axios from "axios";
-
-const URI = "https://secure.s70.ierg4210.ie.cuhk.edu.hk/backend/index.php";
-//const URI = "http://localhost:8080/backend/index.php";
+import api from "./services/api";
 
 export const getCategoryListService = () => {
-  return axios.get(URI + "?action=category");
+  return api.get("/categories");
 };
 
 export const getProductListService = () => {
-  return axios.get(URI + "?action=product");
+  return api.get("/products");
 };
 
 export const addProductService = (product, image, nonce) => {
@@ -20,7 +17,7 @@ export const addProductService = (product, image, nonce) => {
   formData.append("image", image);
   formData.append("nonce", nonce);
 
-  return axios.post(URI + "?action=add_product", formData);
+  return api.post("?action=add_product", formData);
 };
 
 export const addCategoryService = (category, nonce) => {
@@ -28,21 +25,21 @@ export const addCategoryService = (category, nonce) => {
   formData.append("name", category.name);
   formData.append("nonce", nonce);
 
-  return axios.post(URI + "?action=add_category", formData);
+  return api.post("?action=add_category", formData);
 };
 
 export const deleteCategoryService = (catid, nonce) => {
   const formData = new FormData();
   formData.append("nonce", nonce);
 
-  return axios.post(URI + "?action=delete_category&&catid=" + catid, formData);
+  return api.post("?action=delete_category&&catid=" + catid, formData);
 };
 
 export const deleteProductService = (pid, nonce) => {
   const formData = new FormData();
   formData.append("nonce", nonce);
 
-  return axios.post(URI + "?action=delete_product&&pid=" + pid, formData);
+  return api.post("?action=delete_product&&pid=" + pid, formData);
 };
 
 export const updateCategoryService = (category, nonce) => {
@@ -50,8 +47,8 @@ export const updateCategoryService = (category, nonce) => {
   formData.append("name", category.name);
   formData.append("nonce", nonce);
 
-  return axios.post(
-    URI + "?action=update_category&&catid=" + category.catid,
+  return api.post(
+    "?action=update_category&&catid=" + category.catid,
     formData
   );
 };
@@ -66,8 +63,8 @@ export const updateProductService = (product, image, nonce) => {
   formData.append("nonce", nonce);
   console.log("bye");
 
-  return axios.post(
-    URI + "?action=update_product&&pid=" + product.pid,
+  return api.post(
+    "?action=update_product&&pid=" + product.pid,
     formData
   );
 };
@@ -77,7 +74,7 @@ export const loginService = (credential) => {
   formData.append("email", credential.email);
   formData.append("password", credential.password);
 
-  return axios.post(URI + "?action=login", formData);
+  return api.post("?action=login", formData);
 };
 
 export const forgotService = (credential) => {
@@ -85,24 +82,24 @@ export const forgotService = (credential) => {
   formData.append("email", credential.email);
   formData.append("old_password", credential.old_password);
   formData.append("new_password", credential.new_password);
-  return axios.post(URI + "?action=forgot", formData);
+  return api.post("?action=forgot", formData);
 };
 
 export const logoutService = () => {
-  return axios.get(URI + "?action=logout");
+  return api.get("?action=logout");
 };
 
 export const authAdminService = () => {
-  return axios.get(URI + "?action=auth_admin");
+  return api.get("?action=auth_admin");
 };
 
 export const authService = () => {
-  return axios.get(URI + "?action=auth");
+  return api.get("?action=auth");
 };
 
 export const shoppingCartService = (order) => {
   const formData = new FormData();
   formData.append("order", JSON.stringify(order));
 
-  return axios.post(URI + "?action=cart", formData);
+  return api.post("?action=cart", formData);
 };
