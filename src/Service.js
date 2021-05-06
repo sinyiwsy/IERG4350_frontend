@@ -80,6 +80,15 @@ export const loginService = (credential) => {
   return axios.post(URI + "?action=login", formData);
 };
 
+export const registerService = (credential) => {
+  const formData = new FormData();
+  formData.append("email", credential.email);
+  formData.append("username", credential.username);
+  formData.append("password", credential.password);
+
+  return axios.post(URI + "?action=register", formData);
+};
+
 export const forgotService = (credential) => {
   const formData = new FormData();
   formData.append("email", credential.email);
