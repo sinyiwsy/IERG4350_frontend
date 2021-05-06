@@ -103,11 +103,6 @@ export default function PaymentForm(props) {
           >
             Checkout
           </Button>
-          {/*
-          <Button type="default" htmlType="submit">
-            Submit
-          </Button>
-          */}
         </form>
       )}
     </Form>
