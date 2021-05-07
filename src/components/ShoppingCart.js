@@ -35,7 +35,7 @@ const ShoppingCart = (props) => {
       ? []
       : getLocalStorageKeys().map((key) => {
           return props.productList.filter((product) => {
-            return product.pid === key;
+            return product.id === key;
           })[0];
         });
 
@@ -43,9 +43,9 @@ const ShoppingCart = (props) => {
     <Form.Item label={product.name} key={index}>
       <InputNumber
         min={0}
-        defaultValue={localStorage.getItem(product.pid)}
+        defaultValue={localStorage.getItem(product.id)}
         onChange={(value) => {
-          localStorage.setItem(product.pid, value);
+          localStorage.setItem(product.id, value);
           setupdateTotalCost(!updateTotalCost);
         }}
       />
@@ -53,7 +53,7 @@ const ShoppingCart = (props) => {
       <MinusCircleOutlined
         onClick={() => {
           removeShoppingList(product);
-          //localStorage.removeItem(product.pid);
+          //localStorage.removeItem(product.id);
           //setDeleteShoppingCart(!deleteShoppingCart);
         }}
       />
@@ -62,7 +62,7 @@ const ShoppingCart = (props) => {
 
   const totalCost = getShoppingCartList.reduce(
     (total, product) =>
-      total + product.price * localStorage.getItem(product.pid),
+      total + product.price * localStorage.getItem(product.id),
     0
   );
 

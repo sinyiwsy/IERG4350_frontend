@@ -39,15 +39,10 @@ const HomePage = (props) => {
         hoverable
         className="card"
         cover={
-          <a href={"/product/" + product.pid}>
+          <a href={"/product/" + product.id}>
             <img
               alt={product.name}
-              src={
-                "https://secure.s70.ierg4210.ie.cuhk.edu.hk/images/" +
-                product.pid +
-                "." +
-                product.extension
-              }
+              src={product.image}
               height={320}
               width={240}
             />

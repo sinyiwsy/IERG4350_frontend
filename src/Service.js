@@ -119,3 +119,7 @@ export const shoppingCartService = (order) => {
 
   return api.post("?action=cart", formData);
 };
+
+export const checkoutService = () => {
+  return api.post("/create-checkout-session");
+};

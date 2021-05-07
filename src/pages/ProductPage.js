@@ -25,7 +25,7 @@ const ProductPage = (props) => {
 
         if (needUpdateProduct){
             const selectedProduct = props.productList.filter(product => {
-                return product.pid == id;
+                return product.id == id;
             })[0];
             if (selectedProduct != null){
                 setNeedUpdateProduct(false);
@@ -74,7 +74,7 @@ const ProductPage = (props) => {
                 <Card id="mycard">
                     <Row>
                         <Col span={12}>
-                            <img src={"http://54.211.187.254/images/" + product.pid + "." + product.extension}/>
+                            <img src={product.image}/>
                         </Col>
                         <Col span={12}>
                             <h1>{product.name}</h1>

@@ -27,6 +27,7 @@ const App = () => {
 
     if (updateProduct)
       getProductListService().then((res) => {
+        console.log(res.data);
         if (res.data.success == 1) {
           setProductList(res.data.values);
           setUpdateProduct(false);

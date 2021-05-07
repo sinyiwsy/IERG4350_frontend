@@ -21,14 +21,14 @@ export function ShoppingCartProvider({ children }) {
   const [deleteShoppingCart, setDeleteShoppingCart] = useState(false);
 
   const addShoppingList = (newProduct) => {
-    if (localStorage.getItem(newProduct.pid) == null) {
-      localStorage.setItem(newProduct.pid, 1);
+    if (localStorage.getItem(newProduct.id) == null) {
+      localStorage.setItem(newProduct.id, 1);
       setShoppingCart((updateShoppingCart) => !updateShoppingCart);
     }
   };
 
   const removeShoppingList = (oldProduct) => {
-    localStorage.removeItem(oldProduct.pid);
+    localStorage.removeItem(oldProduct.id);
     setDeleteShoppingCart((deleteShoppingCart) => !deleteShoppingCart);
   };
 
