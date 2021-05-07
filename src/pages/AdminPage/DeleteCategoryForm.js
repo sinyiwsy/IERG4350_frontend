@@ -13,7 +13,7 @@ const DeleteCategoryForm = (props) => {
     const onFinish = (values) => {
         console.log('Success:', values);
         deleteCategoryService(values.catid, nonce).then(res => {
-            if (res.data.success == 1){
+            if (res.data.success === 1){
                 updateNonce(res.data.message);
                 props.categoryHandler(true);
                 props.productHandler(true);
@@ -26,7 +26,7 @@ const DeleteCategoryForm = (props) => {
     };
 
     const categoryElements = props.categoryList.map((category, index) => 
-        <Option key={index} value={category.catid}>{category.name}</Option>
+        <Option key={index} value={category.id}>{category.name}</Option>
     );
 
     return (

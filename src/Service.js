@@ -21,18 +21,21 @@ export const addProductService = (product, image, nonce) => {
 };
 
 export const addCategoryService = (category, nonce) => {
-  const formData = new FormData();
-  formData.append("name", category.name);
-  formData.append("nonce", nonce);
+  // const formData = new FormData();
+  // formData.append("name", category.name);
+  // formData.append("nonce", nonce);
 
-  return api.post("?action=add_category", formData);
+  const body = {
+    name: category.name
+  };
+  return api.post("/categories", body);
 };
 
 export const deleteCategoryService = (catid, nonce) => {
-  const formData = new FormData();
-  formData.append("nonce", nonce);
+  // const formData = new FormData();
+  // formData.append("nonce", nonce);
 
-  return api.post("?action=delete_category&&catid=" + catid, formData);
+  return api.delete("/categories/" + catid);
 };
 
 export const deleteProductService = (pid, nonce) => {
@@ -43,13 +46,16 @@ export const deleteProductService = (pid, nonce) => {
 };
 
 export const updateCategoryService = (category, nonce) => {
-  const formData = new FormData();
-  formData.append("name", category.name);
-  formData.append("nonce", nonce);
+  // const formData = new FormData();
+  // formData.append("name", category.name);
+  // formData.append("nonce", nonce);
 
-  return api.post(
-    "?action=update_category&&catid=" + category.catid,
-    formData
+  const body = {
+    name: category.name
+  };
+  return api.put(
+    "/categories/" + category.catid,
+    body
   );
 };
 

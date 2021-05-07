@@ -13,7 +13,7 @@ const UpdateCategoryForm = (props) => {
 
 
     const onFinish = (values) => {
-        console.log('Success:', values.name);
+        console.log('Success:', values.name , values.catid);
         updateCategoryService(values, nonce).then(res => {
             console.log(res);
             if (res.data.success == 1){
@@ -28,7 +28,7 @@ const UpdateCategoryForm = (props) => {
     };
 
     const categoryElements = props.categoryList.map((category, index) => 
-        <Option key={index} value={category.catid}>{category.catid} &nbsp; {category.name}</Option>
+        <Option key={index} value={category.id}>{category.name}</Option>
     );
 
     return (
