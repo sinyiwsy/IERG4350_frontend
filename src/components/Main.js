@@ -5,13 +5,15 @@ import AdminPage from "../pages/AdminPage/AdminPage";
 import "./Main.css";
 import { Layout } from "antd";
 import LoginPage from "../pages/LoginPage";
-import { useIsAdmin } from "../contexts/UserContext";
+import { useIsAdmin, useUser } from "../contexts/UserContext";
 import CheckoutPage from "../pages/CheckoutPage";
+import RegistrationPage from "../pages/RegistrationPage";
 
 const { Content } = Layout;
 
 const Main = (props) => {
   const isAdmin = useIsAdmin();
+  const user = useUser();
 
   return (
     <Content className="content">
@@ -38,9 +40,16 @@ const Main = (props) => {
             />
           </Route>
         )}
-        <Route path="/login">
-          <LoginPage />
-        </Route>
+        {user == "Guest" && (
+          <Route path="/login">
+            <LoginPage />
+          </Route>
+        )}
+        {user == "Guest" && (
+          <Route path="/register">
+            <RegistrationPage />
+          </Route>
+        )}
         <Route path="*">
           <h1>Page Not Found</h1>
         </Route>
