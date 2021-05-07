@@ -11,7 +11,6 @@ const LoginForm = () => {
 
     const updateUser = useUserUpdate();
     const updateIsAdmin = useIsAdminUpdate();
-    const updateNonce = useNonceUpdate();
     const [errorMessage, setErrorMessage] = useState("");
 
     const onFinish = (values) => {
