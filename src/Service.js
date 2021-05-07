@@ -70,20 +70,21 @@ export const updateProductService = (product, image, nonce) => {
 };
 
 export const loginService = (credential) => {
-  const formData = new FormData();
-  formData.append("email", credential.email);
-  formData.append("password", credential.password);
-
-  return api.post("?action=login", formData);
+  const body = {
+    email: credential.email,
+    password: credential.password
+  }
+  return api.post("/user/login", body);
 };
 
 export const registerService = (credential) => {
-  const formData = new FormData();
-  formData.append("email", credential.email);
-  formData.append("username", credential.username);
-  formData.append("password", credential.password);
+  const body = {
+    email: credential.email,
+    username: credential.username,
+    password: credential.password
+  }
 
-  return axios.post(URI + "?action=register", formData);
+  return api.post("/user", body);
 };
 
 export const forgotService = (credential) => {

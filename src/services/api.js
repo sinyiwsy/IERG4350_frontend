@@ -6,7 +6,7 @@ const apiWithCredentials = axios.create({
     baseURL: baseURL,
     withCredentials: true,
     headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
+        'Content-Type': 'application/json'
     }
 });
 
