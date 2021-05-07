@@ -97,6 +97,7 @@ export default function PaymentForm(props) {
             </PaymentInputsWrapper>
           </div>
           <Button
+            style={{ marginTop: 12 }}
             type="default"
             htmlType="submit"
             icon={<ShoppingCartOutlined />}
