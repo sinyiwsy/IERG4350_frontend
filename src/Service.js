@@ -1,4 +1,5 @@
 import api from "./services/api";
+import {loadAccessToken} from "./services/cookies";
 
 export const getCategoryListService = () => {
   return api.get("/categories");
@@ -120,6 +121,15 @@ export const shoppingCartService = (order) => {
   return api.post("?action=cart", formData);
 };
 
-export const checkoutService = () => {
-  return api.post("/create-checkout-session");
+export const checkoutService = (shoppingCart) => {
+  let axiosConfig = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer ".concat(loadAccessToken()),
+    },
+  };
+  const body = {
+    shoppingCart: shoppingCart,
+  }
+  return api.post("/create-checkout-session", body, axiosConfig);
 };
