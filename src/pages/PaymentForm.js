@@ -4,6 +4,9 @@ import images from "react-payment-inputs/images";
 import { ShoppingCartOutlined } from "@ant-design/icons";
 import { Button } from "antd";
 import { shoppingCartService } from "../Service";
+import { loadStripe } from '@stripe/stripe-js';
+
+const stripePromise = loadStripe(process.env.STRIPE_PUBLISH_KEY);
 
 const getLocalStorageKeys = () => {
   let res = [];
@@ -26,6 +29,8 @@ export default function PaymentForm(props) {
 
   const onSubmit = async (values) => {
     // await sleep(300);
+    const stripe = await stripePromise;
+    
     console.log(JSON.stringify(values, 0, 2));
     console.log(props.productList);
     onFinish();

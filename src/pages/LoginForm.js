@@ -9,6 +9,7 @@ import { useState } from 'react';
 const LoginForm = () => {
     const history = useHistory();
 
+    const updateNonce = useNonceUpdate();
     const updateUser = useUserUpdate();
     const updateIsAdmin = useIsAdminUpdate();
     const [errorMessage, setErrorMessage] = useState("");
