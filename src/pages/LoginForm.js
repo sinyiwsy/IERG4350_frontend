@@ -11,22 +11,22 @@ const LoginForm = () => {
 
     const updateUser = useUserUpdate();
     const updateIsAdmin = useIsAdminUpdate();
-    const updateNonce = useNonceUpdate();
     const [errorMessage, setErrorMessage] = useState("");
 
     const onFinish = (values) => {
         setErrorMessage("");
         console.log('Success:', values);
         loginService(values).then(res => {
-            if (res.data.success == 1){
-                updateUser(res.data.email);
+            if (res.data.success === 1){
                 console.log(res.data);
-                updateIsAdmin(res.data.isAdmin == 1 ? true : false);
-                updateNonce(res.data.nonce);
-                if (res.data.isAdmin == 1)
+                updateUser(res.data.values.email);
+                updateIsAdmin(res.data.values.isAdmin);
+                if (res.data.values.isAdmin){
                     history.push('/admin');
-                else    
+                }
+                else{
                     history.push('/');
+                }
             }else{
                 setErrorMessage("Wrong Email or Password");
             }
