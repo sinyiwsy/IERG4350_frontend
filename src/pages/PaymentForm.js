@@ -35,8 +35,17 @@ export default function PaymentForm(props) {
     keys.forEach((key) => {
       orders.push({ id: key, quantity: localStorage.getItem(key) });
     });
-    checkoutService(orders).then((res) => {
+    checkoutService(orders).then( async (res) => {
       console.log(res.data);
+      const session = res.data;
+
+      const result = await stripe.redirectToCheckout({
+        sessionId: session.id,
+      });
+  
+      if (result.error) {
+        // TODO
+      }
     });
   };
 
