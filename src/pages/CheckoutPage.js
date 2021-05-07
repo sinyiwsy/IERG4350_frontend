@@ -8,14 +8,16 @@ const CheckoutPage = (props) => {
 
   return (
     <>
-      <h1>Hello {user} !</h1>
-      <h1>This is checkout page!!</h1>
-      <Row>
-        <ShoppingCart productList={props.productList} />
-      </Row>
-      <Row>
-        <PaymentForm productList={props.productList} />
-      </Row>
+      <div style={{ height: "100vh" }}>
+        <h1>Hello {user} !</h1>
+        <h1>This is checkout page!!</h1>
+        <Row>
+          <ShoppingCart productList={props.productList} />
+        </Row>
+        <Row>
+          <PaymentForm productList={props.productList} />
+        </Row>
+      </div>
     </>
   );
 };

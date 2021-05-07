@@ -1,15 +1,15 @@
-import ForgotForm from './ForgotForm';
-import LoginForm from './LoginForm';
-
+import ForgotForm from "./ForgotForm";
+import LoginForm from "./LoginForm";
 
 const LoginPage = (props) => {
-
-    return (
-        <>
-            <LoginForm userHandler={props.userHandler} user={props.user}/>
-            <ForgotForm />
-        </>
-    );
-}
+  return (
+    <>
+      <div style={{ height: "100vh" }}>
+        <LoginForm userHandler={props.userHandler} user={props.user} />
+        <ForgotForm />
+      </div>
+    </>
+  );
+};
 
 export default LoginPage;
