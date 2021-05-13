@@ -29,7 +29,7 @@ export default function PaymentForm(props) {
 
   const onSubmit = async (values) => {
     await sleep(300);
-    const stripe = await loadStripe(`${process.env.STRIPE_PUBLISH_KEY}`);
+    const stripe = await loadStripe(`${process.env.REACT_APP_STRIPE_PUBLISH_KEY}`);
     let orders = [];
     var keys = getLocalStorageKeys();
     keys.forEach((key) => {
@@ -42,7 +42,7 @@ export default function PaymentForm(props) {
       const result = await stripe.redirectToCheckout({
         sessionId: session.id,
       });
-  
+
       if (result.error) {
         // TODO
       }
