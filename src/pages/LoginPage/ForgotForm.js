@@ -1,7 +1,7 @@
 import { Form, Input, Button } from 'antd';
 import Password from 'antd/lib/input/Password';
-import { forgotService } from '../Service';
-import { useUserUpdate, useIsAdminUpdate } from "../contexts/UserContext";
+import { forgotService } from '../../Service';
+import { useUserUpdate, useIsAdminUpdate } from "../../contexts/UserContext";
 
 
 

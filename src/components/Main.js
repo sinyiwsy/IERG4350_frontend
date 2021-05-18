@@ -4,10 +4,12 @@ import ProductPage from "../pages/ProductPage";
 import AdminPage from "../pages/AdminPage/AdminPage";
 import "./Main.css";
 import { Layout } from "antd";
-import LoginPage from "../pages/LoginPage";
+import LoginPage from "../pages/LoginPage/LoginPage";
 import { useIsAdmin, useUser } from "../contexts/UserContext";
 import CheckoutPage from "../pages/CheckoutPage";
 import RegistrationPage from "../pages/RegistrationPage";
+import PaymentSuccessPage from "../pages/PaymentResultPage/PaymentSuccessPage";
+import PaymentFailPage from "../pages/PaymentResultPage/PaymentFailPage";
 
 const { Content } = Layout;
 
@@ -30,6 +32,12 @@ const Main = (props) => {
         <Route exact path="/checkout">
           <CheckoutPage productList={props.productList} />
         </Route>
+        <Route path="/payment_success">
+          <PaymentSuccessPage />
+        </Route>
+        <Route path="/payment_fail">
+          <PaymentFailPage />
+        </Route>
         {isAdmin && (
           <Route path="/admin">
             <AdminPage
@@ -41,15 +49,15 @@ const Main = (props) => {
           </Route>
         )}
         {user == "Guest" && (
-          <Route path="/login">
-            <LoginPage />
-          </Route>
-        )}
-        {user == "Guest" && (
-          <Route path="/register">
-            <RegistrationPage />
-          </Route>
-        )}
+          <>
+            <Route path="/login">
+              <LoginPage />
+            </Route>
+            <Route path="/register">
+              <RegistrationPage />
+            </Route>
+          </>
+        )}        
         <Route path="*">
           <h1>Page Not Found</h1>
         </Route>
