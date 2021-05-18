@@ -1,14 +1,14 @@
 import { Form, Input, Button } from "antd";
 import Password from "antd/lib/input/Password";
-import { loginService } from "../Service";
+import { loginService } from "../../Service";
 import { useHistory } from "react-router-dom";
 import {
   useUserUpdate,
   useIsAdminUpdate,
   useNonceUpdate,
-} from "../contexts/UserContext";
+} from "../../contexts/UserContext";
 import { useState } from "react";
-import { saveAccessToken } from "../services/cookies";
+import { saveAccessToken } from "../../services/cookies";
 
 const LoginForm = () => {
   const history = useHistory();
