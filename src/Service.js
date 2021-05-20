@@ -1,5 +1,5 @@
 import api from "./services/api";
-import {loadAccessToken} from "./services/cookies";
+import { loadAccessToken } from "./services/cookies";
 
 export const getCategoryListService = () => {
   return api.get("/categories");
@@ -19,13 +19,14 @@ export const addProductService = (product, image, nonce) => {
   // formData.append("nonce", nonce);
 
   // return api.post("?action=add_product", formData);
+  console.log(image);
   const body = {
     categoryId: product.catid,
     name: product.name,
     price: product.price,
     description: product.description,
-    image: product.image
-  }
+    imageContent: image,
+  };
 
   return api.post("/products", body);
 };
@@ -36,7 +37,7 @@ export const addCategoryService = (category, nonce) => {
   // formData.append("nonce", nonce);
 
   const body = {
-    name: category.name
+    name: category.name,
   };
   return api.post("/categories", body);
 };
@@ -61,12 +62,9 @@ export const updateCategoryService = (category, nonce) => {
   // formData.append("nonce", nonce);
 
   const body = {
-    name: category.name
+    name: category.name,
   };
-  return api.put(
-    "/categories/" + category.catid,
-    body
-  );
+  return api.put("/categories/" + category.catid, body);
 };
 
 export const updateProductService = (product, image, nonce) => {
@@ -79,17 +77,14 @@ export const updateProductService = (product, image, nonce) => {
   formData.append("nonce", nonce);
   console.log("bye");
 
-  return api.post(
-    "?action=update_product&&pid=" + product.pid,
-    formData
-  );
+  return api.post("?action=update_product&&pid=" + product.pid, formData);
 };
 
 export const loginService = (credential) => {
   const body = {
     email: credential.email,
-    password: credential.password
-  }
+    password: credential.password,
+  };
   return api.post("/user/login", body);
 };
 
@@ -97,8 +92,8 @@ export const registerService = (credential) => {
   const body = {
     email: credential.email,
     username: credential.username,
-    password: credential.password
-  }
+    password: credential.password,
+  };
 
   return api.post("/user", body);
 };
@@ -139,6 +134,6 @@ export const checkoutService = (shoppingCart) => {
   };
   const body = {
     shoppingCart: shoppingCart,
-  }
+  };
   return api.post("/create-checkout-session", body, axiosConfig);
 };
