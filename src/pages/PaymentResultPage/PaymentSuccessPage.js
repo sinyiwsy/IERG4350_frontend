@@ -9,13 +9,15 @@ const PaymentSuccessPage = () => {
   return (
     <Result
       status="success"
-      title="Successfully Purchased 4350!"
+      title="Purchase Success!"
       subTitle={"Order number: " + sessionId.replace(/cs_test_/, "")}
       extra={[
         <Button type="primary" key="console" onClick={() => history.push("/")}>
           Go Home Page
         </Button>,
-        <Button key="buy">Buy More</Button>,
+        <Button key="buy" onClick={() => history.push("/")}>
+          Buy More
+        </Button>,
       ]}
     />
   );

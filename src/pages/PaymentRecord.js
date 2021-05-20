@@ -28,7 +28,16 @@ export default function PaymentRecord(props) {
     let day = oldDate.getUTCDate();
     let hour = oldDate.getUTCHours();
     let min = oldDate.getUTCMinutes();
-    let newDate = String(year) + "-" + String(month) + "-" + String(day) + "-" + String(hour) + ":" + String(min);
+    let newDate =
+      String(year) +
+      "-" +
+      String(month) +
+      "-" +
+      String(day) +
+      "-" +
+      String(hour) +
+      ":" +
+      String(min);
     console.log(newDate);
     return newDate;
     // return oldDate.getUTCFullYear() + "-" + oldDate.getUTCMonth() + 1 + "-" + oldDate.ggetUTCDate()
@@ -42,9 +51,13 @@ export default function PaymentRecord(props) {
 
         {!updatePaymentRecord && (
           <Table dataSource={paymentRecord}>
-            <Column title="Date&Time" dataIndex={covertDateTime(paymentRecord[0].createdAt)} key="date">
-            </Column>
-            <Column 
+            <Column
+              title="Date & Time"
+              dataIndex="createdAt"
+              key="date"
+              render={(createdAt) => covertDateTime(createdAt)}
+            />
+            <Column
               title="Details"
               dataIndex="details"
               key="details"
@@ -63,8 +76,8 @@ export default function PaymentRecord(props) {
                         </Col>
                         <Col flex={3} justify="start">
                           {item.price_data.product_data.name}
-                          <br />
-                          ${item.price_data.unit_amount / 100}x{item.quantity}
+                          <br />${item.price_data.unit_amount / 100}x
+                          {item.quantity}
                         </Col>
                       </Row>
                     </Card>
