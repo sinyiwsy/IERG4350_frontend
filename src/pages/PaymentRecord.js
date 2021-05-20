@@ -45,7 +45,7 @@ export default function PaymentRecord(props) {
 
   return (
     <>
-      <div style={{ height: "100vh" }}>
+      <div>
         <h1>Hello {user} !</h1>
         <h1>This is Payment Record page</h1>
 
