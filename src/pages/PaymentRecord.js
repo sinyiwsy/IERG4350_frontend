@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import { useUser } from "../contexts/UserContext";
 import { getRecordService } from "..//Service";
-import { Table, Tag, Space } from "antd";
-import { Card, Row, Col } from "antd";
+import { Table, Tag, Space, Card, Row, Col, Alert } from "antd";
 const { Column, ColumnGroup } = Table;
 
 export default function PaymentRecord(props) {
@@ -85,7 +84,14 @@ export default function PaymentRecord(props) {
                 </>
               )}
             />
-            <Column title="Status" dataIndex="status" key="status" />
+            <Column
+              title="Status"
+              dataIndex="status"
+              key="status"
+              render={(status) => (
+                <Alert message="Success" type="success" showIcon />
+              )}
+            />
           </Table>
         )}
       </div>
