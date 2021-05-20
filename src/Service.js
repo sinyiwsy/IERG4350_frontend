@@ -137,3 +137,14 @@ export const checkoutService = (shoppingCart) => {
   };
   return api.post("/create-checkout-session", body, axiosConfig);
 };
+
+export const getRecordService = () => {
+  let axiosConfig = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer ".concat(loadAccessToken()),
+    },
+  };
+  
+  return api.get("/payments/success", axiosConfig);
+};

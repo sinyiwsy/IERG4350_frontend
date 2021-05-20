@@ -12,8 +12,8 @@ import {
   HomeTwoTone,
   IdcardTwoTone,
   CalculatorTwoTone,
-  MoneyCollectTwoTone,
-  HistoryOutlined,
+  DollarTwoTone,
+  WalletTwoTone ,
 } from "@ant-design/icons";
 
 const { Sider } = Layout;
@@ -91,13 +91,15 @@ const MySider = (props) => {
           </Menu.Item>
         )}
 
-        <Menu.Item key="6" icon={<MoneyCollectTwoTone />}>
+        <Menu.Item key="6" icon={<DollarTwoTone />}>
           <Link to="/checkout">Checkout</Link>
         </Menu.Item>
 
-        <Menu.Item key="7" icon={<HistoryOutlined />}>
-          <Link to="/paymenthistory">Payment History</Link>
-        </Menu.Item>
+        {user != "Guest" && (
+          <Menu.Item key="7" icon={<WalletTwoTone />}>
+            <Link to="/paymenthistory">Payment History</Link>
+          </Menu.Item>
+        )}
 
         {categoryElements}
       </Menu>
