@@ -6,11 +6,13 @@ import { useIsAdmin, useUser } from "../contexts/UserContext";
 import { logoutService, authAdminService } from "../Service.js";
 import { useUserUpdate, useIsAdminUpdate } from "../contexts/UserContext";
 import { useHistory } from "react-router-dom";
+import { removeAccessToken } from "../services/cookies"
 
 import {
   HomeTwoTone,
   IdcardTwoTone,
   CalculatorTwoTone,
+  MoneyCollectTwoTone,
 } from "@ant-design/icons";
 
 const { Sider } = Layout;
@@ -26,7 +28,7 @@ const MySider = (props) => {
 
   const categoryElements = props.categoryList.map((category, index) => (
     <Menu.Item
-      key={index + 6}
+      key={index + 7}
       icon={<IdcardTwoTone />}
       onClick={() => chooseCategory(category)}
     >
@@ -38,6 +40,7 @@ const MySider = (props) => {
     logoutService();
     userUpdate("Guest");
     isAdminUpdate(false);
+    removeAccessToken();
     history.push("/login");
   };
 
@@ -86,6 +89,10 @@ const MySider = (props) => {
             <Link to="/register">Register</Link>
           </Menu.Item>
         )}
+
+        <Menu.Item key="6" icon={<MoneyCollectTwoTone />}>
+          <Link to="/checkout">Checkout</Link>
+        </Menu.Item>
 
         {categoryElements}
       </Menu>
