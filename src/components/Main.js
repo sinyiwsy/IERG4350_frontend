@@ -10,6 +10,7 @@ import CheckoutPage from "../pages/CheckoutPage";
 import RegistrationPage from "../pages/RegistrationPage";
 import PaymentSuccessPage from "../pages/PaymentResultPage/PaymentSuccessPage";
 import PaymentFailPage from "../pages/PaymentResultPage/PaymentFailPage";
+import PaymentRecord from "./../pages/PaymentRecord";
 
 const { Content } = Layout;
 
@@ -38,6 +39,9 @@ const Main = (props) => {
         <Route path="/payment_fail">
           <PaymentFailPage />
         </Route>
+        <Route path="/paymenthistory">
+          <PaymentRecord />
+        </Route>
         {isAdmin && (
           <Route path="/admin">
             <AdminPage
@@ -57,7 +61,7 @@ const Main = (props) => {
               <RegistrationPage />
             </Route>
           </>
-        )}        
+        )}
         <Route path="*">
           <h1>Page Not Found</h1>
         </Route>
