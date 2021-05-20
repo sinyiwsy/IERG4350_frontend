@@ -99,7 +99,7 @@ const CheckoutPage = (props) => {
                   icon={<MinusCircleOutlined />}
                   onClick={(e) => {
                     removeShoppingList(text);
-                    onDelete(record.key, e);
+                    // onDelete(record.key, e);
                   }}
                 />
               )}
