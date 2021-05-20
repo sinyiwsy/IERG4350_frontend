@@ -10,15 +10,24 @@ export const getProductListService = () => {
 };
 
 export const addProductService = (product, image, nonce) => {
-  const formData = new FormData();
-  formData.append("catid", product.catid);
-  formData.append("name", product.name);
-  formData.append("price", product.price);
-  formData.append("description", product.description);
-  formData.append("image", image);
-  formData.append("nonce", nonce);
+  // const formData = new FormData();
+  // formData.append("catid", product.catid);
+  // formData.append("name", product.name);
+  // formData.append("price", product.price);
+  // formData.append("description", product.description);
+  // formData.append("image", image);
+  // formData.append("nonce", nonce);
 
-  return api.post("?action=add_product", formData);
+  // return api.post("?action=add_product", formData);
+  const body = {
+    categoryId: product.catid,
+    name: product.name,
+    price: product.price,
+    description: product.description,
+    image: product.image
+  }
+
+  return api.post("/products", body);
 };
 
 export const addCategoryService = (category, nonce) => {

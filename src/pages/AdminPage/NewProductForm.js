@@ -42,7 +42,7 @@ const NewProductForm = (props) => {
     };
 
     const categoryElements = props.categoryList.map((category, index) => 
-        <Option key={index} value={category.catid}>{category.catid} &nbsp; {category.name}</Option>
+        <Option key={index} value={category.id}>{category.name}</Option>
     );
 
     const uploadProps = {
