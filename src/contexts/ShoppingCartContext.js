@@ -28,16 +28,15 @@ export function ShoppingCartProvider({ children }) {
   };
 
   const removeShoppingList = (oldProduct) => {
-    localStorage.removeItem(oldProduct.id);
+    // localStorage.removeItem(oldProduct.id);
+    localStorage.removeItem(oldProduct);
     setDeleteShoppingCart((deleteShoppingCart) => !deleteShoppingCart);
   };
 
   return (
     <ShoppingCartContext.Provider value={shoppingCart}>
       <ShoppingCartUpdateContext.Provider value={addShoppingList}>
-        <ShoppingCartDeleteContext.Provider value={removeShoppingList}>
-          {children}
-        </ShoppingCartDeleteContext.Provider>
+        <ShoppingCartDeleteContext.Provider value={removeShoppingList}>{children}</ShoppingCartDeleteContext.Provider>
       </ShoppingCartUpdateContext.Provider>
     </ShoppingCartContext.Provider>
   );
