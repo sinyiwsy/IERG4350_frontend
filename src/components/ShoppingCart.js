@@ -52,7 +52,7 @@ const ShoppingCart = (props) => {
       @${product.price}
       <MinusCircleOutlined
         onClick={() => {
-          removeShoppingList(product);
+          removeShoppingList(product, 1);
           //localStorage.removeItem(product.id);
           //setDeleteShoppingCart(!deleteShoppingCart);
         }}
@@ -60,11 +60,7 @@ const ShoppingCart = (props) => {
     </Form.Item>
   ));
 
-  const totalCost = getShoppingCartList.reduce(
-    (total, product) =>
-      total + product.price * localStorage.getItem(product.id),
-    0
-  );
+  const totalCost = getShoppingCartList.reduce((total, product) => total + product.price * localStorage.getItem(product.id), 0);
 
   return (
     <div id="foo">

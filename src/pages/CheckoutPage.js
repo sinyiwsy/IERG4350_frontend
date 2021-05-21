@@ -4,7 +4,7 @@ import { useUser } from "../contexts/UserContext";
 import { Button, Row, Col, Table, Card, InputNumber, Form, Input } from "antd";
 import { useEffect, useState, setState } from "react";
 import { useHistory } from "react-router-dom";
-import { useShoppingCartDelete } from "../contexts/ShoppingCartContext";
+import { useShoppingCartDelete, useShoppingCartDelete2 } from "../contexts/ShoppingCartContext";
 import { MinusCircleOutlined } from "@ant-design/icons";
 
 const { Column, ColumnGroup } = Table;
@@ -24,6 +24,7 @@ const CheckoutPage = (props) => {
   const [checkoutPageShoppingCart, setCheckOutPageShoppingCart] = useState([]);
   const [updateCheckoutPageShoppingCart, setUpdateCheckoutPageShoppingCart] = useState(true);
   const removeShoppingList = useShoppingCartDelete();
+  const removeShoppingList2 = useShoppingCartDelete2();
   const [updateSubCost, setUpdateSubCost] = useState(true);
 
   useEffect(() => {
@@ -55,6 +56,11 @@ const CheckoutPage = (props) => {
     e.preventDefault();
     const data = checkoutPageShoppingCart.filter((item) => item.key !== key);
     setState({ data, isPageTween: false });
+  };
+
+  const handleDelete = (data, key) => {
+    const dataSource = [...data];
+    setState({ dataSource: dataSource.filter((item) => item.key !== key) });
   };
 
   return (
@@ -98,8 +104,9 @@ const CheckoutPage = (props) => {
                   type="danger"
                   icon={<MinusCircleOutlined />}
                   onClick={(e) => {
-                    removeShoppingList(text);
+                    removeShoppingList(text, 2);
                     // onDelete(record.key, e);
+                    // handleDelete(dataSource, record.key);
                   }}
                 />
               )}
